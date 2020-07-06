@@ -4,7 +4,19 @@
 
 @section('content')
     <h1>Portafolio</h1>
-    <h3>Forma de hacerlo "if" luego "foreach"</h3>
+
+<ul>
+    @forelse($portafolio as $portafolioItem)
+<li>{{$portafolioItem->title}} <br><small> {{$portafolioItem->description}}</small></li>
+    @empty
+        <li>No hay proyectos para mostrar</li>
+    @endforelse    
+</ul>
+
+@endsection
+    
+
+    {{-- <h3>Forma de hacerlo "if" luego "foreach"</h3>
     <p>"if" si existe algun contenido en tal variable</p>
     <ul>
         @if ($portafolio)
@@ -80,4 +92,4 @@
     <p>@ while()</p>
     <p>@ endwhile</p>
 
-@endsection
+@endsection --}}

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+
 use Illuminate\Http\Request;
 
 class portafoliocontroller extends Controller
@@ -13,12 +15,8 @@ class portafoliocontroller extends Controller
      */
     public function index()
     {
-        $portafolio = [
-            ['title' => 'Proyecto 1#'],
-            ['title' => 'Proyecto 2#'],
-            ['title' => 'Proyecto 3#'],
-            ['title' => 'Proyecto 4#'],
-        ];
+        $portafolio = DB::table('project')->get();
+
         return view('portafolio', compact('portafolio'));
     }
 
