@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+// use DB;
+use App\Project;
 
 use Illuminate\Http\Request;
 
@@ -15,9 +16,18 @@ class portafoliocontroller extends Controller
      */
     public function index()
     {
-        $portafolio = DB::table('project')->get();
 
-        return view('portafolio', compact('portafolio'));
+        // $portafolio = DB::table('project')->get();
+        // $portafolio = Project::get();
+        //ordenar por creación descendiente
+        // $portafolio = Project::orderBy('created_at','DESC')->get();
+        //ordenar por actualizacion
+        // $portafolio = Project::latest('updated_at')->get();
+        
+
+        return view('portafolio', [
+            'proyectos' => Project::latest()->paginate(2)
+        ]);
     }
 
     /**

@@ -6,15 +6,21 @@
     <h1>Portafolio</h1>
 
 <ul>
-    @forelse($portafolio as $portafolioItem)
-<li>{{$portafolioItem->title}} <br><small> {{$portafolioItem->description}}</small></li>
+    @forelse($proyectos as $proyecto)
+    <li>{{$proyecto->title}} <br><small> {{$proyecto->description}}</small>
+    <br>{{$proyecto->updated_at}}
+    <br>{{$proyecto->created_at->format('Y-m-d')}}
+    <br>{{$proyecto->created_at->diffForHumans()}}
+    </li>
     @empty
         <li>No hay proyectos para mostrar</li>
-    @endforelse    
+    @endforelse
+
+    {{$proyectos->links()}}
 </ul>
 
 @endsection
-    
+
 
     {{-- <h3>Forma de hacerlo "if" luego "foreach"</h3>
     <p>"if" si existe algun contenido en tal variable</p>
@@ -68,7 +74,7 @@
             <li>No hay proyecto que mostrar</li>
         @endforelse
     </ul>
-   
+
     <p>iteration: intereación nro.</p>
     <p>index: numero del elemento recorrido.</p>
     <p>remaining: cuántos elementos nos quedan.</p>
